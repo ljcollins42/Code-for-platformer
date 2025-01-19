@@ -1,0 +1,34 @@
+using UnityEngine;
+
+public class GameController : MonoBehaviour
+{
+    
+    public int maxHealth = 10;
+    public int health;
+    Vector2 startPos;
+
+    private void Start()
+    {
+        startPos = transform.position;
+        health = maxHealth;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if(health <=0)
+        {
+            Die();
+        }
+    }
+
+    void Die ()
+    {
+        Respawn();
+    }
+
+    void Respawn()
+    {
+        transform.position = startPos;
+    }
+}
